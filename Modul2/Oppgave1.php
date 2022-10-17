@@ -29,7 +29,7 @@ if(isset($_GET["submit"])) {
 
 ?>
 
-<a href="http://localhost/Modul2/index.html">Tilbake til hovedsiden</a> 
+<a href="http://localhost/IS-115Moduler/Modul2/index.html">Tilbake til hovedsiden</a> 
 
 
 </body>
