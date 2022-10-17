@@ -158,7 +158,7 @@ if(isset($_POST["submit"])) {
     <input type = "submit" name = "submit" value = "Opprett bruker">
 </form>
 
-<a href="http://localhost/Modul4/index.html">Tilbake til hovedsiden</a>
+<a href="http://localhost/IS-115Moduler/Modul4/index.html">Tilbake til hovedsiden</a>
 
 
 

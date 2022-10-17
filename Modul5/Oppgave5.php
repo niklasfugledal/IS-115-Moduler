@@ -29,7 +29,7 @@ function encryption($string, $key) : string
 
 $encryptedText = encryption($string, $key);
 //printer ut verdien
-echo "Kryptert text: $encryptedText";
+echo "1 Kryptert text: $encryptedText";
 echo "<br>";
 
 
@@ -41,9 +41,9 @@ function decryption($string, $key) : string
 
 $decryptedText = decryption($encryptedText, $key);
 //printer ut verdien
-echo "Dekryptert text = $decryptedText";
+echo "x2 Dekryptert text = $decryptedText";
 echo "<br>";
 
 ?>
 
-<a href="http://localhost/Modul5/index.html">Tilbake til hovedsiden</a>
+<a href="http://localhost/IS-115Moduler/Modul5/index.html">Tilbake til hovedsiden</a>
