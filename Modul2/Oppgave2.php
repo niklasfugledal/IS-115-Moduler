@@ -31,7 +31,7 @@ echo strip_tags($Etternavn) . "<br> <h3>(fjerner HTML tags fra variabelen.)</h3>
 
 
 ?>
-<a href="http://localhost/Modul2/index.html">Tilbake til hovedsiden</a>
+<a href="http://localhost/IS-115Moduler/Modul2/index.html">Tilbake til hovedsiden</a>
 
 
 

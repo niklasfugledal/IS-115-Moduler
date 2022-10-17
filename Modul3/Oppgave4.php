@@ -59,4 +59,4 @@ echo "<br><br>";
 
 ?>
 
-<a href="http://localhost/Modul3/index.html">Tilbake til hovedsiden</a>
+<a href="http://localhost/IS-115Moduler/Modul3/index.html">Tilbake til hovedsiden</a>
