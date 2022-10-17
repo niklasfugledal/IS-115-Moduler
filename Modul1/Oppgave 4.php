@@ -19,7 +19,7 @@ $diff = abs($num1 - $num2);
     echo "Gjennomsnittet = " . ($num1 + $num2) / 2 . "<br><br>";
 ?>
 
-<a href="http://localhost/Modul%201/index.html">Tilbake til hovedsiden</a>
+<a href="http://localhost/IS-115Moduler/Modul1/index.html">Tilbake til hovedsiden</a>
 
 
 

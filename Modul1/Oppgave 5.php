@@ -25,4 +25,4 @@ echo "$Timer timer, $Minutter, minutter, $Sekunder og sekunder. <br><br>";
 
 <br>
 
-<a href="http://localhost/Modul%201/index.html">Tilbake til hovedsiden</a>
+<a href="http://localhost/IS-115Moduler/Modul1/index.html">Tilbake til hovedsiden</a>
