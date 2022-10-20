@@ -87,4 +87,4 @@ function Rute($rute) {
 
 ?>
 
-<a href="http://localhost/IS-115Moduler/Modul3/index.html">Tilbake til hovedsiden</a>
+<a href="./index.html">Tilbake til hovedsiden</a>
