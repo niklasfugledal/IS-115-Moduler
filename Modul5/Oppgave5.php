@@ -23,7 +23,7 @@ function encryption($string, $key) : string
 
 $encryptedText = encryption($string, $key);
 //printer ut verdien
-echo "1 Kryptert text: $encryptedText";
+echo " = Kryptert text: $encryptedText";
 echo "<br>";
 
 
@@ -35,8 +35,8 @@ function decryption($string, $key) : string
 
 $decryptedText = decryption($encryptedText, $key);
 //printer ut verdien
-echo "x2 Dekryptert text = $decryptedText";
-echo "<br>";
+echo " y = Dekryptert text = $decryptedText";
+echo "<br><br>";
 
 ?>
 
