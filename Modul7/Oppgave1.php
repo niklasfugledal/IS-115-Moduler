@@ -1,28 +1,9 @@
 <?php
-include_once('C:\xampp\htdocs\IS-115Moduler\Modul7\includes/db.inc.php');
+include_once('C:\xampp\htdocs\IS-115Moduler\Modul7\includes/db.conn.php');
 
-$sql = "SELECT * FROM events WHERE price = :price";
-$sp = $pdo->prepare($sql);
-$sp->bindParam(':price', $price, PDO::PARAM_STR);
-$price = "150";
-
-try {
-    $sp->execute();
-} catch (PDOException $e) {
-    echo $e->getMessage() . "<br>";
-}
-
-$events = $sp->fetchAll(PDO::FETCH_OBJ);
-if ($sp->rowcount() > 0) {
-    foreach ($events as $event) {
-        echo "Verdiene hentet er : ";
-        echo $event->name . " // ";
-        echo $event->price . " // ";
-        echo $event->location . " // ";
-        echo $event->host . " // ";
-    }
-} else {
-    echo "Spørringen returnerte ingen oppføringer";
+if (isset($conn)) {
+    //henter alle events
+    $result = $conn->query("SELECT * FROM events;");
 }
 
 ?>
@@ -54,31 +35,14 @@ if ($sp->rowcount() > 0) {
                 <th>Host</th>
             </tr>
         </thead>
+        <?php
 
-        <tbody>
-            <?php
-            $servername = "localhost";
-            $username = "root";
-            $password = "";
-            $database = "modul7";
 
-            // create conn
 
-            $connection = new mysqli($servername, $username, $password, $database);
+        while ($row = $result->fetch_assoc()) {
 
-            if ($connection->connect_error) {
-                die("Connection failed: " . $connection->connect_error);
-            }
 
-            $sql = "SELECT * FROM events";
-            $result = $connection->query($sql);
-
-            if (!$result) {
-                die("Invalid query: " . $connection->error);
-            }
-
-            while ($row = $result->fetch_assoc()) {
-                echo " <tr>
+            echo " <tr>
                     <td> " . $row["EID"] . "</td>
                     <td> " . $row["name"] . "</td>
                     <td> " . $row["price"] . "</td>
@@ -86,10 +50,15 @@ if ($sp->rowcount() > 0) {
                     <td> " . $row["host"] . "</td>
                     
                 </tr>";
-            }
+        }
 
-            ?>
-        </tbody>
+        ?>
+
+        <?php
+        $conn->close();
+        ?>
+
+
     </table>
 </body>
 
