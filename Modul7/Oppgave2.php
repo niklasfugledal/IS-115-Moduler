@@ -2,23 +2,42 @@
 
 include_once "includes/db.conn.php";
 
- //tom array som blir fylt dersom man fanger opp feil ved registreringen
- $errors = [];
 
- if(empty($errors)){
+if(isset($_POST['submit']))
+{
+  $fornavn = $_POST["fornavn"];
+  $etternavn = $_POST["etternavn"];
+  $epost = $_POST["epost"];
+  $adresse = $_POST["adresse"];
+  $postnummer = $_POST["postnummer"];
+  $poststed = $_POST["poststed"];
+  $mobilnummer = $_POST["mobilnummer"];
+  $fødselsdato = $_POST["fødselsdato"];
+  $kjønn = $_POST["kjønn"];
+  $brukernavn = $_POST["brukernavn"];
+  $passord = $_POST["passord"];
+
+ 
      //Starter database kallet med en prepare metode.
      $result = $conn->prepare("INSERT INTO registration (fornavn, etternavn, epost, adresse, postnummer, poststed, mobilnummer, fødselsdato, kjønn, brukernavn, passord) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
     
      //Kobler parameterene i spøringen med verdiene hentet ut fra from-et.
-     $result->bind_param("ssssissssss", $fornavn, $etternavn, $epost, $adresse, $postnummer, $poststed, $mobilnummer, $fødselsdato, $kjønn, $brukernavn, $passord1);
+     $result->bind_param("ssssisissss", $fornavn, $etternavn, $epost, $adresse, $postnummer, $poststed, $mobilnummer, $fødselsdato, $kjønn, $brukernavn, $passord);
  
-   
-         $conn->close();
- }
-
+        //utfører spørringen.
+        if ($result->execute()) {
+            echo "Medlemmet er registrert i databasen.";
+            //lukker tilkoblingen
+            $conn->close();
+        } else {
+            echo "Noe gikk galt. Sjekk error: " . $conn->error;
+        }
+    }
+    
+    
 ?>
 
-<form action="includes/db.conn.php" method="post">
+<form action="" method="post">
  <table>
      <h3>Registrer en ny bruker</h3>
      <tr>
@@ -27,7 +46,7 @@ include_once "includes/db.conn.php";
      </tr>
      <tr>
          <th>Etternavn*:</th>
-         <td><input type="text" name="fornavn" value="<?php if(isset($_POST["etternavn"])){echo $_POST["etternavn"];} ?>" required></td>
+         <td><input type="text" name="etternavn" value="<?php if(isset($_POST["etternavn"])){echo $_POST["etternavn"];} ?>" required></td>
      </tr>
      <tr>
          <th>Epost*:</th>
@@ -39,7 +58,7 @@ include_once "includes/db.conn.php";
      </tr>
      <tr>
          <th>Postnr*:</th>
-         <td><input type="number" name="postnr" value="<?php if(isset($_POST["postnummer"])){echo $_POST["postnummer"];} ?>" required></td>
+         <td><input type="number" name="postnummer" value="<?php if(isset($_POST["postnummer"])){echo $_POST["postnummer"];} ?>" required></td>
      </tr>
      <tr>
          <th>Poststed:</th>
@@ -47,7 +66,7 @@ include_once "includes/db.conn.php";
      </tr>
      <tr>
          <th>Mobilnr*:</th>
-         <td><input type="number" name="mobilnr" value="<?php if(isset($_POST["mobilnummer"])){echo $_POST["mobilnummer"];} ?>" required></td>
+         <td><input type="number" name="mobilnummer" value="<?php if(isset($_POST["mobilnummer"])){echo $_POST["mobilnummer"];} ?>" required></td>
      </tr>
      <tr>
          <th>Fødselsdato*:</th>
@@ -67,16 +86,13 @@ include_once "includes/db.conn.php";
      </tr>
      <tr>
          <th>Passord*:</th>
-         <td><input type="password" name="passord1" required></td>
+         <td><input type="password" name="passord" required></td>
      </tr>
      <tr>
-         <th>Gjenta passord*:</th>
-         <td><input type="password" name="passord2" required></td>
-     </tr>
  </table>
  <input type="submit" name="submit" value="Opprett bruker">
 </form>
 
 <br><br>
-<a href="index.php">Gå tilbake til startsiden</a>
+<a href="index.html">Gå tilbake til startsiden</a>
 
