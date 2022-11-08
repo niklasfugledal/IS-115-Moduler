@@ -1,3 +1,34 @@
+<?php
+$fornavn = $_POST["fornavn"];
+  $etternavn = $_POST["etternavn"];
+  $epost = $_POST["epost"];
+  $adresse = $_POST["adresse"];
+  $postnummer = $_POST["postnummer"];
+  $poststed = $_POST["poststed"];
+  $mobilnummer = $_POST["mobilnummer"];
+  $fødselsdato = $_POST["fødselsdato"];
+  $kjønn = $_POST["kjønn"];
+  $brukernavn = $_POST["brukernavn"];
+  $passord1 = $_POST["passord1"];
+  $passord2 = $_POST["passord2"];
+
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <form action="../Modul7/includes/connect.php" method="post">
     <table>
         <h3>Register en ny bruker</h3>
