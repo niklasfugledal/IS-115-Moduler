@@ -2,15 +2,16 @@
 include_once('includes/db.conn.php');
 include_once('includes/bootstrap.php');
 
-$result = $conn->query("SELECT registration.fornavn, registration.etternavn, interesser.id, registration.mobilnummer  
-                       FROM registration JOIN interesser ON registration.id = interesser.user_id;");
+$result = $conn->query("SELECT registration.fornavn, registration.etternavn, registration.mobilnummer, interests.interesse
+FROM registration JOIN interests ON registration.id = interests.userID;");
 
-if(isset($_POST["submit"])){
+if (isset($_POST["submit"])) {
     $interest = $_POST["interests"];
 
+
     //Forbreder spørringen
-    $query = $conn->prepare("SELECT registration.fornavn, registration.etternavn, interesser.user_id, registration.mobilnummer 
-                            FROM registration JOIN interesser ON registration.id = interesser.user_Id WHERE user_id = ?;");
+    $query = $conn->prepare("SELECT registration.fornavn, registration.etternavn, registration.mobilnummer, interests.interesse
+                             FROM registration JOIN interests ON registration.id = interests.userID WHERE interesse = ?;");
     //Kobler parameterene i spøringen med verdiene hentet ut fra from-et.
     $query->bind_param("s", $interest);
     //Utfører spørringen mot databasen
@@ -25,25 +26,27 @@ if(isset($_POST["submit"])){
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Oppgave 5</title>
 </head>
+
 <body>
     <h1 class="display-2">Interesser</h1>
 
     <form action="" class="" method="post">
-       
+
         <select name="interests">
-        <option selected disabled><?php echo isset($_POST["interests"]) ? $_POST["interests"] : "Interesser"; ?></option>
-        <option value="Fotball">Fotball</option>
-        <option value="Håndball">Håndball</option>
-        <option value="Gaming">Gaming</option>
-        <option value="Frisbee">Frisbee</option>
-        <option value="Klatring">Klatring</option>
-        <option value="Reise">Reise</option>
-        <option value="Historie">Historie</option>
+            <option selected disabled><?php echo isset($_POST["interests"]) ? $_POST["interests"] : "Interesser"; ?></option>
+            <option value="Fotball">Fotball</option>
+            <option value="Håndball">Håndball</option>
+            <option value="Gaming">Gaming</option>
+            <option value="Frisbee">Frisbee</option>
+            <option value="Klatring">Klatring</option>
+            <option value="Reise">Reise</option>
+            <option value="Historie">Historie</option>
         </select>
-        
+
         <input type="submit" name="submit">
     </form>
 
@@ -63,7 +66,7 @@ if(isset($_POST["submit"])){
         /*Sjekker at formet er submitet
         Lager en assosiativ array med verdiene fra medlems tabellen.
         Looper gjennom verdiene og printer dem ut i tabellen. */
-        
+
         while ($row = $result->fetch_assoc()) {
         ?>
 
@@ -71,22 +74,23 @@ if(isset($_POST["submit"])){
                 <tr>
                     <td><?php echo $row["fornavn"]; ?></td>
                     <td><?php echo $row["etternavn"]; ?></td>
-                    <td><?php echo $row["navn"]; ?></td>
-                    <td><?php echo $row["mobilnr"]; ?></td>
-                    
+                    <td><?php echo $row["interesse"]; ?></td>
+                    <td><?php echo $row["mobilnummer"]; ?></td>
+
                 </tr>
             </tbody>
 
         <?php
-            };
-        
+        };
+
 
         //lukker tilkoblingen til db
         $conn->close();
         ?>
     </table>
     <br><br>
-    <a href="index.php">Gå tilbake til startsiden</a>
-    
+    <a href="index.html">Gå tilbake til startsiden</a>
+
 </body>
+
 </html>
