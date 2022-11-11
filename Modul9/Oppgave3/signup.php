@@ -1,7 +1,6 @@
 <?php
-include_once 'includes/bootstrap.php';
-include_once 'includes/db.inc.php';
-
+include_once '../includes/bootstrap.php';
+include_once "../includes/db.inc.php";
 
 if(isset($_POST["submit"])) {
     // sjekker at formet er fylt ut og henter verdiene
@@ -15,7 +14,6 @@ if(isset($_POST["submit"])) {
         $user_err = "Brukernavnet kan kun inneholder bokstaver og tall";
 
     }else{
-        
         //Forbreder spørringen for å sjekke om brukernavnet allerede er i bruk
         $quey = $conn->prepare("select * from brukere where bruker_navn = ?");
         //Kobler parameterene i spøringen med verdiene hentet ut fra from-et.
