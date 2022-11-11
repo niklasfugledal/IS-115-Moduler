@@ -37,7 +37,7 @@ if(isset($_POST["submit"]) and isset($_FILES["img"]) ){
         $fileName = $userId . "." . $imgActualExt;
         
         //definerer hvor filen skal lagres
-        $fileDestination ="../uploads" . $fileName;
+        $fileDestination ="./uploads/" . $fileName;
 
         move_uploaded_file($imgTempName, $fileDestination);
         //sender brukeren tilbake til hovedsiden med en success melding
